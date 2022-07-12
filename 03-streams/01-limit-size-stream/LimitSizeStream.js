@@ -12,7 +12,7 @@ class LimitSizeStream extends stream.Transform {
     const chunkSize = chunk.byteLength;
     console.log("current chunk: ", chunkSize);
     if (chunkSize > this.limit) {
-      throw new LimitExceededError();
+      this.destroy(new LimitExceededError());
     }
     this.limit = this.limit - chunkSize;
     callback(null, chunk);
