@@ -12,7 +12,6 @@ server.on("request", (req, res) => {
   if (pathname.split("/").length > 1) {
     res.statusCode = 400;
     res.end("nested folders are unsuported");
-    //* if there is no such a file
   }
 
   switch (req.method) {
